@@ -3,22 +3,12 @@ import {useSetAtom} from "jotai";
 import {notesAtom} from "../../store/atoms.ts";
 import {useTrackNote} from "./useNote.tsx";
 import type {INote, Position, Size, DragMode} from "../../types.ts";
+import {rectanglesIntersect} from "./utils.ts";
 import "./Note.css";
 
 interface NoteProps extends INote {
 	trashRef: RefObject<HTMLDivElement | null>;
 }
-
-const rectanglesIntersect = (a?: DOMRect, b?: DOMRect): boolean => {
-	if (!a || !b) return false;
-
-	return !(
-		a.right < b.left ||
-		a.left > b.right ||
-		a.bottom < b.top ||
-		a.top > b.bottom
-	);
-};
 
 export const Note = ({id, _position, _size, trashRef}: NoteProps) => {
 	const setNotes = useSetAtom(notesAtom);
@@ -111,7 +101,7 @@ export const Note = ({id, _position, _size, trashRef}: NoteProps) => {
 			window.removeEventListener("pointermove", handlePointerMove);
 			window.removeEventListener("pointerup", handlePointerUp);
 		};
-	}, [id, setNotes, trashRef]);
+	}, []);
 
 	return (
 		<div
