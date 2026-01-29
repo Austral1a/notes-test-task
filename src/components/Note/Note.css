@@ -1,0 +1,22 @@
+.note {
+    position: absolute;
+    background: #fff7b2;
+    border-radius: 8px;
+    color: black;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    padding: 16px;
+    cursor: grab;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.note__resize-handle {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    width: 14px;
+    height: 14px;
+    cursor: nwse-resize;
+    background: rgba(0,0,0,0.25);
+    border-radius: 3px;
+}
